@@ -42,6 +42,14 @@ export interface AccessKey {
 
 export interface AccessKeys extends Array<AccessKey> {}
 
+export interface Survey {
+  email: string;
+  type: string;
+  response: string;
+  paymail: string;
+}
+export interface Surveys extends Array<Survey> {}
+
 export interface Destination {
   id: string;
   xpub_id: string;
@@ -302,6 +310,7 @@ export interface TransportService {
   DraftToRecipients(recipients: Recipients, metadata: Metadata): Promise<DraftTransaction>;
   DraftTransaction(transactionConfig: TransactionConfigInput, metadata: Metadata): Promise<DraftTransaction>;
   RecordTransaction(hex: string, referenceID: string, metadata: Metadata): Promise<Transaction>;
+  SaveSurveyResponse(email: string, response: string, paymail: string): Promise<Survey>;
   UpdateTransactionMetadata(txID: string, metadata: Metadata): Promise<Transaction>;
 }
 

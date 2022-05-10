@@ -13,6 +13,7 @@ import {
   PaymailAddress,
   PaymailAddresses,
   Recipients,
+  Survey,
   Transaction,
   TransactionConfigInput,
   Transactions,
@@ -549,6 +550,17 @@ class TransportHTTP implements TransportService {
         metadata,
       })
     });
+  }
+
+  async SaveSurveyResponse(email: string, response: string, paymail: string): Promise<Survey> {
+    return await this.doHTTPRequest(`${this.serverUrl}/survey`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: email,
+        response: response,
+        paymail: paymail,
+      })
+    })
   }
 
   /**

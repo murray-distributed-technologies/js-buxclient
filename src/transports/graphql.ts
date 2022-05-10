@@ -21,6 +21,7 @@ import {
   PaymailAddress,
   PaymailAddresses,
   Recipients,
+  Survey,
   Transaction,
   TransactionConfigInput,
   Transactions,
@@ -903,6 +904,13 @@ class TransportGraphQL implements TransportService {
     const variables = { transactionConfig, metadata }
 
     return this.doGraphQLMutation(query, variables, 'new_transaction');
+  }
+
+  async SaveSurveyResponse(id: string, response: string, paymail: string): Promise<Survey> {
+    const query = gql`{
+      }`;
+    const variables = {}
+    return  this.doGraphQLMutation(query, variables, 'new_survey');
   }
 
   async RecordTransaction(hex: string, referenceID: string, metadata: Metadata): Promise<Transaction> {

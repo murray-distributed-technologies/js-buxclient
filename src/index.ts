@@ -16,6 +16,7 @@ import {
   PaymailAddress,
   PaymailAddresses,
   Recipients,
+  Survey,
   Transaction,
   TransactionConfig,
   Transactions,
@@ -327,6 +328,10 @@ class BuxClient implements TransportService {
 
   async RecordTransaction(hex: string, referenceID: string, metadata: Metadata): Promise<Transaction> {
     return await this.client.transport.RecordTransaction(hex, referenceID, metadata);
+  }
+
+  async SaveSurveyResponse(email: string, response: string, paymail: string): Promise<Survey> {
+    return await this.client.transport.SaveSurveyResponse(email, response, paymail);
   }
 
   async UpdateTransactionMetadata(txID: string, metadata: Metadata): Promise<Transaction> {
